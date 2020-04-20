@@ -46,8 +46,6 @@ type Pinger struct {
 	ipv4 bool
 }
 
-// Mostly based on https://github.com/golang/net/blob/master/icmp/ping_test.go
-// All ye beware, there be dragons below...
 const (
 	ProtocolICMP     = 1
 	ProtocolIPv6ICMP = 58
@@ -113,7 +111,7 @@ func SendAndReceiveRequests(p *Pinger) (*net.IPAddr, time.Duration, float64, err
 	m := icmp.Message{
 		Type: ipv4.ICMPTypeEcho, Code: 0,
 		Body: &icmp.Echo{
-			ID: os.Getpid() & 0xffff, Seq: 1, //<< uint(seq), // TODO
+			ID: os.Getpid() & 0xffff, Seq: 1,
 			Data: []byte(""),
 		},
 	}
@@ -145,7 +143,6 @@ func SendAndReceiveRequests(p *Pinger) (*net.IPAddr, time.Duration, float64, err
 	if err != nil {
 		return p.ipaddr, 0, 0, err
 	}
-	//n, peer, err := c.ReadFrom(reply)
 	if p.ipv4 {
 
 		n, _, _, err = c.IPv4PacketConn().ReadFrom(reply)
@@ -203,13 +200,13 @@ var pingCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 0 {
 			fmt.Println("Enter a hostname or an IP address")
+			os.Exit(1)
 		}
 		count := cmd.Flag("count").Value.String()
 		interval := cmd.Flag("interval").Value.String()
 		intval, _ := strconv.Atoi(interval)
 		addr := args[0]
 		ping, _ := NewPinger(addr)
-
 		ping.Count, _ = strconv.Atoi(count)
 		ping.Interval = time.Duration(intval)
 		Run(ping)

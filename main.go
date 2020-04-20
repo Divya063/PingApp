@@ -9,7 +9,7 @@ import (
 
 var usage = `
 Usage:
-    ping [-c count] [-i interval] [-t timeout] [--privileged] host
+sudo pingApp ping host [--count] [--interval] 
 Examples:
     # ping google continuously
 	sudo pingApp ping google.com
@@ -24,14 +24,4 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	// p("8.8.8.8")
-	// // p("172.27.0.1")
-	// p("0:0:0:0:0:ffff:7f00:1")
-	// //p("reddit.com")
-	// p("2600::")
-
-	//for {
-	//    p("google.com")
-	//    time.Sleep(1 * time.Second)
-	//}
 }
