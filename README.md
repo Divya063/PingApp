@@ -1,6 +1,6 @@
 ## PingApp
 
-A Ping CLI application for MacOS. The CLI app accepts a hostname or an IP address as its argument and provide support for  both <b>IPv4</b> and <b> IPv6</b>. It can send ICMP "echo requests" in an infinite loop to the target while receiving "echo reply" messages, if count flag is not mentioned. It reports loss and RTT times for each sent message.
+A Ping CLI application. The CLI app accepts a hostname or an IP address as its argument and provide support for  both <b>IPv4</b> and <b> IPv6</b>. It can send ICMP "echo requests" in an infinite loop to the target while receiving "echo reply" messages, if count flag is not mentioned. It reports loss and RTT times for each sent message.
 
 ### Setup
 
