@@ -28,6 +28,3 @@ $ sudo pingApp ping google.com  --count 3 --interval 2
 
 To run the tests use the command:
 `sudo go test `
-
-### Demo
-[![asciicast](https://asciinema.org/a/6VT6StWYtUisZ7KbrLr7QMI1i.svg)](https://asciinema.org/a/6VT6StWYtUisZ7KbrLr7QMI1i)
